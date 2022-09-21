@@ -1,15 +1,48 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<h1>Heloo world</h1>
+
+<!-- rendering comonent -->
+<!-- stati prop no v-mind only for dynmaic -->
+
+<!-- paremt to child -->
+<!-- <my-component greeting="good morning" :UserName="UserName" :rollNo="40" :College="College" /> -->
+
+<!-- child to parent -->
+
+<child-component-vue @getDataFromChild="getDataFromChild"/>
+
+<h3>Data from Toy from Child:{{KidsToyData}}</h3>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ChildComponentVue from './components/ChildComponent.vue'
+// import MyComponent from './components/MyComponent.vue'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
+    ChildComponentVue
+    // MyComponent,
+    
+  },
+  data(){
+    return{
+      UserName:"Raju Rastogi",  
+      KidsToyData:"",
+
+       };
+  },
+  methods:{
+    // chocolate function
+    // 1. in parent component creatte function and pass it to child component
+    // 2. call that function in child component and pass the data inside that function
+     
+    getDataFromChild(childData){
+      console.log("chocolate function executed",childData);
+      this.KidsToyData=childData
+    }
+
   }
 }
 </script>
